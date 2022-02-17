@@ -180,6 +180,10 @@ phy#1
 		addr 54:c9:e0:00:1b:c6
 		type monitor
 		txpower 12.00 dBm
+		
+		
+
+touch shark15.cap && tshark -i wlx54c9e0001bc6 -w shark15.cap
 
 ```
 
@@ -196,3 +200,5 @@ modify wpa supplicant
 sudo wpa_passphrase "SSID" "passphrase"  | sudo tee -a /etc/wpa_supplicant/wpa_supplicant.conf
 
 ```
+
+
