@@ -182,3 +182,17 @@ phy#1
 		txpower 12.00 dBm
 
 ```
+
+### configuration
+/etc/network/interfaces no change
+
+edit /etc/dhcpcd.conf
+```
+interface wlan0
+nohook wpa_supplicant
+```
+modify wpa supplicant 
+```
+sudo wpa_passphrase "SSID" "passphrase"  | sudo tee -a /etc/wpa_supplicant/wpa_supplicant.conf
+
+```
