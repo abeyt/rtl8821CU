@@ -117,3 +117,67 @@ Use the tool 'iw', please don't use other tools like 'airmon-ng'
 iw dev wlan0 set monitor none
 ```
 
+
+
+
+
+
+
+https://forums.raspberrypi.com/viewtopic.php?t=309068
+git clone https://github.com/brektrou/rtl8821CU.git
+cd rtl8821CU
+chmod +x dkms-install.sh
+sudo ./dkms-install.sh
+
+pi@raspberrypi:~/rtl8821CU $ sudo ./dkms-install.sh 
+About to run dkms install steps...
+
+Creating symlink /var/lib/dkms/rtl8821CU/5.4.1/source ->
+                 /usr/src/rtl8821CU-5.4.1
+
+DKMS: add completed.
+
+Kernel preparation unnecessary for this kernel.  Skipping...
+
+Building module:
+cleaning build area...
+'make' KVER=5.10.92-v7l+..................................................................................................................................
+cleaning build area...
+
+DKMS: build completed.
+
+8821cu.ko:
+Running module version sanity check.
+ - Original module
+   - No original module exists within this kernel
+ - Installation
+   - Installing to /lib/modules/5.10.92-v7l+/kernel/drivers/net/wireless/realtek/rtl8821cu/
+
+depmod......
+
+DKMS: install completed.
+Finished running dkms install steps.
+
+pi@raspberrypi:~/rtl8821CU $ sudo modprobe -v 8821cu
+insmod /lib/modules/5.10.92-v7l+/kernel/drivers/net/wireless/realtek/rtl8821cu/8821cu.ko 
+pi@raspberrypi:~/rtl8821CU $ sudo iw dev
+phy#1
+	Interface wlx54c9e0001bc6
+		ifindex 4
+		wdev 0x100000001
+		addr 54:c9:e0:00:1b:c6
+		type managed
+		txpower 12.00 dBm
+
+ip link set wlx54c9e0001bc6 down
+iw wlx54c9e0001bc6 set monitor none
+ip link set wlx54c9e0001bc6 up
+pi@raspberrypi:~/rtl8821CU $ sudo iw dev
+phy#1
+	Interface wlx54c9e0001bc6
+		ifindex 4
+		wdev 0x100000001
+		addr 54:c9:e0:00:1b:c6
+		type monitor
+		txpower 12.00 dBm
+
