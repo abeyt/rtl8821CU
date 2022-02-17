@@ -121,8 +121,8 @@ iw dev wlan0 set monitor none
 
 
 
-
-
+### Notes abeyt
+```
 https://forums.raspberrypi.com/viewtopic.php?t=309068
 git clone https://github.com/brektrou/rtl8821CU.git
 cd rtl8821CU
@@ -181,3 +181,4 @@ phy#1
 		type monitor
 		txpower 12.00 dBm
 
+```
